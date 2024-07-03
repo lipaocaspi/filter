@@ -14,9 +14,10 @@ import com.examen.models.genero.application.GeneroService;
 import com.examen.models.pais.adapter.in.PaisConsoleAdapter;
 import com.examen.models.pais.adapter.out.PaisMySQLRepository;
 import com.examen.models.pais.application.PaisService;
+import com.examen.models.pelicula.adapter.in.PeliculaConsoleAdapter;
 import com.examen.models.pelicula.adapter.out.PeliculaMySQLRepository;
+import com.examen.models.pelicula.application.PeliculaService;
 import com.examen.models.peliculaFormato.adapter.out.PeliculaFormatoMySQLRepository;
-import com.examen.models.peliculaProtagonista.adapter.out.PeliculaProtagonistaMySQLRepository;
 import com.examen.models.tipoActor.adapter.in.TipoActorConsoleAdapter;
 import com.examen.models.tipoActor.adapter.out.TipoActorMySQLRepository;
 import com.examen.models.tipoActor.application.TipoActorService;
@@ -24,8 +25,8 @@ import com.examen.models.tipoActor.application.TipoActorService;
 public class Main {
     public static void main(String[] args) {
         String url =  "jdbc:mysql://localhost:3306/cinecampus";
-        String user= "campus2023";
-        String password = "campus2023";
+        String user= "root";
+        String password = "123456";
 
         ActorMySQLRepository actorMySQLRepository = new ActorMySQLRepository(url, user, password);
         FormatoMySQLRepository formatoMySQLRepository = new FormatoMySQLRepository(url, user, password);
@@ -66,7 +67,9 @@ public class Main {
                 actorConsoleAdapter.showMenu();
             }
             case 2 -> {
-
+                PeliculaService peliculaService = new PeliculaService(peliculaMySQLRepository);
+                PeliculaConsoleAdapter peliculaConsoleAdapter = new PeliculaConsoleAdapter(peliculaService);
+                peliculaConsoleAdapter.showMenu();
             }
             case 3 -> {
                 FormatoService formatoService = new FormatoService(formatoMySQLRepository);
