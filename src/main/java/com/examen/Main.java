@@ -7,7 +7,9 @@ import com.examen.models.actor.adapter.out.ActorMySQLRepository;
 import com.examen.models.actor.application.ActorService;
 import com.examen.models.formato.adapter.out.FormatoMySQLRepository;
 import com.examen.models.genero.adapter.out.GeneroMySQLRepository;
+import com.examen.models.pais.adapter.in.PaisConsoleAdapter;
 import com.examen.models.pais.adapter.out.PaisMySQLRepository;
+import com.examen.models.pais.application.PaisService;
 import com.examen.models.pelicula.adapter.out.PeliculaMySQLRepository;
 import com.examen.models.peliculaFormato.adapter.out.PeliculaFormatoMySQLRepository;
 import com.examen.models.peliculaProtagonista.adapter.out.PeliculaProtagonistaMySQLRepository;
@@ -68,7 +70,9 @@ public class Main {
                 
             }
             case 6 -> {
-                
+                PaisService paisService = new PaisService(paisMySQLRepository);
+                PaisConsoleAdapter paisConsoleAdapter = new PaisConsoleAdapter(paisService);
+                paisConsoleAdapter.showMenu();
             }
             case 7 -> {
                 

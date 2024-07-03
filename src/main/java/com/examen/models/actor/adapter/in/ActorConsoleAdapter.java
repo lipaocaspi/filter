@@ -5,13 +5,15 @@ import java.util.Scanner;
 import com.examen.models.actor.application.ActorService;
 
 public class ActorConsoleAdapter {
-    private final ActorService ActorService;
+    private final ActorService actorService;
 
     public ActorConsoleAdapter(ActorService actorService) {
-        ActorService = actorService;
+        this.actorService = actorService;
     }
 
+
     public void showMenu() {
+        int option;
         String menuActores = """
             1. Agregar Actor
             2. Editar Actor
@@ -23,7 +25,7 @@ public class ActorConsoleAdapter {
         System.out.println(menuActores);
         System.out.println("Ingrese una opción: ");
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
+        option = sc.nextInt();
                 
         switch (option) {
             case 1:

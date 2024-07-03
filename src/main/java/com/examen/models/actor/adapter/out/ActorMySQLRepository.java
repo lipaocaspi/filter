@@ -11,7 +11,6 @@ import java.util.Optional;
 
 import com.examen.models.actor.domain.Actor;
 import com.examen.models.actor.infrastructure.ActorRepository;
-import com.examen.models.tipoActor.domain.TipoActor;
 
 public class ActorMySQLRepository implements ActorRepository {
 
@@ -33,7 +32,7 @@ public class ActorMySQLRepository implements ActorRepository {
                 statement.setString(1, actor.getNombre());
                 statement.setInt(2, actor.getIdNacionalidad());
                 statement.setInt(3, actor.getEdad());
-                statement.setInt(4, actor.getGenero());
+                statement.setInt(4, actor.getIdGenero());
 				statement.executeUpdate();
 			}
 		}
@@ -64,7 +63,7 @@ public class ActorMySQLRepository implements ActorRepository {
 				statement.setString(1, actor.getNombre());
                 statement.setInt(2, actor.getIdNacionalidad());
                 statement.setInt(3, actor.getEdad());
-                statement.setInt(4, actor.getGenero());
+                statement.setInt(4, actor.getIdGenero());
 				statement.setInt(5, actor.getId());
 				statement.executeUpdate();
 			}

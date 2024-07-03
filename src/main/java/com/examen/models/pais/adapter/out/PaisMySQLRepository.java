@@ -27,7 +27,7 @@ public class PaisMySQLRepository implements PaisRepository {
     @Override
     public void save(Pais pais) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "INSERT INTO pais VALUES (?)";
+			String query = "INSERT INTO pais (descripcion) VALUES (?)";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setString(1, pais.getDescripcion());
 				statement.executeUpdate();
