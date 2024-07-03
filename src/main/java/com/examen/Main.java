@@ -2,7 +2,9 @@ package com.examen;
 
 import java.util.Scanner;
 
+import com.examen.models.actor.adapter.in.ActorConsoleAdapter;
 import com.examen.models.actor.adapter.out.ActorMySQLRepository;
+import com.examen.models.actor.application.ActorService;
 import com.examen.models.formato.adapter.out.FormatoMySQLRepository;
 import com.examen.models.genero.adapter.out.GeneroMySQLRepository;
 import com.examen.models.pais.adapter.out.PaisMySQLRepository;
@@ -23,7 +25,7 @@ public class Main {
         PaisMySQLRepository paisMySQLRepository = new PaisMySQLRepository(url, user, password);
         PeliculaMySQLRepository peliculaMySQLRepository = new PeliculaMySQLRepository(url, user, password);
         PeliculaFormatoMySQLRepository peliculaFormatoMySQLRepository = new PeliculaFormatoMySQLRepository(url, user, password);
-        PeliculaProtagonistaMySQLRepository peliculaProtagonistaMySQLRepository = new PeliculaProtagonistaMySQLRepository(url, user, password);
+        // PeliculaProtagonistaMySQLRepository peliculaProtagonistaMySQLRepository = new PeliculaProtagonistaMySQLRepository(url, user, password);
         TipoActorMySQLRepository tipoActorMySQLRepository = new TipoActorMySQLRepository(url, user, password);
 
         Scanner sc = new Scanner(System.in);
@@ -49,7 +51,9 @@ public class Main {
 
         switch (opt) {
             case 1 ->  {
-
+                ActorService actorService = new ActorService(actorMySQLRepository);
+                ActorConsoleAdapter actorConsoleAdapter = new ActorConsoleAdapter(actorService);
+                actorConsoleAdapter.showMenu();
             }
             case 2 -> {
 
