@@ -28,7 +28,7 @@ public class GeneroMySQLRepository implements GeneroRepository {
     @Override
     public void save(Genero genero) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "INSERT INTO genero VALUES (?)";
+			String query = "INSERT INTO genero (descripcion) VALUES (?)";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setString(1, genero.getDescripcion());
 				statement.executeUpdate();

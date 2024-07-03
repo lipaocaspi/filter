@@ -6,7 +6,9 @@ import com.examen.models.actor.adapter.in.ActorConsoleAdapter;
 import com.examen.models.actor.adapter.out.ActorMySQLRepository;
 import com.examen.models.actor.application.ActorService;
 import com.examen.models.formato.adapter.out.FormatoMySQLRepository;
+import com.examen.models.genero.adapter.in.GeneroConsoleAdapter;
 import com.examen.models.genero.adapter.out.GeneroMySQLRepository;
+import com.examen.models.genero.application.GeneroService;
 import com.examen.models.pais.adapter.in.PaisConsoleAdapter;
 import com.examen.models.pais.adapter.out.PaisMySQLRepository;
 import com.examen.models.pais.application.PaisService;
@@ -29,7 +31,7 @@ public class Main {
         PeliculaFormatoMySQLRepository peliculaFormatoMySQLRepository = new PeliculaFormatoMySQLRepository(url, user, password);
         // PeliculaProtagonistaMySQLRepository peliculaProtagonistaMySQLRepository = new PeliculaProtagonistaMySQLRepository(url, user, password);
         TipoActorMySQLRepository tipoActorMySQLRepository = new TipoActorMySQLRepository(url, user, password);
-
+        boolean isActive = true;
         Scanner sc = new Scanner(System.in);
         String menu ="""
                 ---CINE CAMPUS---
@@ -51,6 +53,8 @@ public class Main {
         System.out.println(menu);
         int opt = sc.nextInt();
 
+
+
         switch (opt) {
             case 1 ->  {
                 ActorService actorService = new ActorService(actorMySQLRepository);
@@ -67,6 +71,9 @@ public class Main {
                 
             }
             case 5 -> {
+                GeneroService generoService = new GeneroService(generoMySQLRepository);
+                GeneroConsoleAdapter generoConsoleAdapter = new GeneroConsoleAdapter(generoService);
+                generoConsoleAdapter.showMenu();
                 
             }
             case 6 -> {
