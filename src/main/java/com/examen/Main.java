@@ -9,15 +9,22 @@ import com.examen.models.pais.adapter.out.PaisMySQLRepository;
 import com.examen.models.pelicula.adapter.out.PeliculaMySQLRepository;
 import com.examen.models.peliculaFormato.adapter.out.PeliculaFormatoMySQLRepository;
 import com.examen.models.peliculaProtagonista.adapter.out.PeliculaProtagonistaMySQLRepository;
+import com.examen.models.tipoActor.adapter.out.TipoActorMySQLRepository;
 
 public class Main {
     public static void main(String[] args) {
-        String url =  "";
-        String user= "";
-        String password = "";
+        String url =  "jdbc:mysql://localhost:3306/cinecampus";
+        String user= "campus2023";
+        String password = "campus2023";
 
-        ActorMySQLRepository actorMySQLRepository = new ActorMySQLRepository(url, user password);
-        PeliculaProtagonistaMySQLRepository
+        ActorMySQLRepository actorMySQLRepository = new ActorMySQLRepository(url, user, password);
+        FormatoMySQLRepository formatoMySQLRepository = new FormatoMySQLRepository(url, user, password);
+        GeneroMySQLRepository generoMySQLRepository = new GeneroMySQLRepository(url, user , password);
+        PaisMySQLRepository paisMySQLRepository = new PaisMySQLRepository(url, user, password);
+        PeliculaMySQLRepository peliculaMySQLRepository = new PeliculaMySQLRepository(url, user, password);
+        PeliculaFormatoMySQLRepository peliculaFormatoMySQLRepository = new PeliculaFormatoMySQLRepository(url, user, password);
+        PeliculaProtagonistaMySQLRepository peliculaProtagonistaMySQLRepository = new PeliculaProtagonistaMySQLRepository(url, user, password);
+        TipoActorMySQLRepository tipoActorMySQLRepository = new TipoActorMySQLRepository(url, user, password);
 
         Scanner sc = new Scanner(System.in);
         String menu ="""
