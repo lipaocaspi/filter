@@ -28,9 +28,9 @@ public class PeliculaMySQLRepository implements PeliculaRepository {
     @Override
     public void save(Pelicula pelicula) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "INSERT INTO pelicula (codigoInterno, nombre, duracion, sinopsis) VALUES (?,?,?,?)";
+			String query = "INSERT INTO pelicula (coditerno, nombre, duracion, sinopsis) VALUES (?,?,?,?)";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
-                statement.setString(1, pelicula.getCodigoInterno());
+                statement.setString(1, pelicula.getCodInterno());
                 statement.setString(2, pelicula.getNombre());
                 statement.setString(3, pelicula.getDuracion());
                 statement.setString(4, pelicula.getSinopsis());
@@ -59,9 +59,9 @@ public class PeliculaMySQLRepository implements PeliculaRepository {
     @Override
     public void update(Pelicula pelicula) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "UPDATE pelicula SET codigoInterno = ?, nombre = ?, duracion = ?, sinopsis = ? WHERE id = ?";
+			String query = "UPDATE pelicula SET codinterno = ?, nombre = ?, duracion = ?, sinopsis = ? WHERE id = ?";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
-				statement.setString(1, pelicula.getCodigoInterno());
+				statement.setString(1, pelicula.getCodInterno());
                 statement.setString(2, pelicula.getNombre());
                 statement.setString(3, pelicula.getDuracion());
                 statement.setString(4, pelicula.getSinopsis());
@@ -84,7 +84,7 @@ public class PeliculaMySQLRepository implements PeliculaRepository {
 					if (resultSet.next()) {
 						Pelicula pelicula = new Pelicula (
 							resultSet.getInt("id"),
-							resultSet.getString("codigoInterno"),
+							resultSet.getString("codinterno"),
                             resultSet.getString("nombre"),
                             resultSet.getString("duracion"),
                             resultSet.getString("sinopsis")
@@ -110,7 +110,7 @@ public class PeliculaMySQLRepository implements PeliculaRepository {
 					while (resultSet.next()) {
 						Pelicula pelicula = new Pelicula (
 							resultSet.getInt("id"),
-							resultSet.getString("codigoInterno"),
+							resultSet.getString("codinterno"),
                             resultSet.getString("nombre"),
                             resultSet.getString("duracion"),
                             resultSet.getString("sinopsis")

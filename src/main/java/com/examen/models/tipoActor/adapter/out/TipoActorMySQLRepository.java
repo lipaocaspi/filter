@@ -28,7 +28,7 @@ public class TipoActorMySQLRepository implements TipoActorRepository {
     @Override
     public void save(TipoActor tipoActor) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "INSERT INTO tipoActor VALUES (?)";
+			String query = "INSERT INTO tipoactor VALUES (?)";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setString(1, tipoActor.getDescripcion());
 				statement.executeUpdate();
@@ -42,7 +42,7 @@ public class TipoActorMySQLRepository implements TipoActorRepository {
     @Override
     public void delete(int id) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "DELETE FROM tipoActor WHERE id = ?";
+			String query = "DELETE FROM tipoactor WHERE id = ?";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setInt(1, id);
 				statement.executeUpdate();
@@ -56,7 +56,7 @@ public class TipoActorMySQLRepository implements TipoActorRepository {
     @Override
     public void update(TipoActor tipoActor) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "UPDATE tipoActor SET descripcion = ? WHERE id = ?";
+			String query = "UPDATE tipoactor SET descripcion = ? WHERE id = ?";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setString(1, tipoActor.getDescripcion());
 				statement.setInt(2, tipoActor.getId());
@@ -71,7 +71,7 @@ public class TipoActorMySQLRepository implements TipoActorRepository {
     @Override
     public Optional<TipoActor> findById(int id) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "SELECT * FROM tipoActor WHERE id = ?";
+			String query = "SELECT * FROM tipoactor WHERE id = ?";
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
@@ -95,7 +95,7 @@ public class TipoActorMySQLRepository implements TipoActorRepository {
     public List<TipoActor> findAll() {
         List<TipoActor> allTipoActor = new ArrayList<>();
 		try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String query = "SELECT * FROM tipoActor";
+			String query = "SELECT * FROM tipoactor";
 			try (PreparedStatement statement = connection.prepareStatement(query);
 					ResultSet resultSet = statement.executeQuery()) {
 					while (resultSet.next()) {

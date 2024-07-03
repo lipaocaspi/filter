@@ -60,7 +60,7 @@ public class PeliculaFormatoMySQLRepository implements PeliculaFormatoRepository
 				statement.setInt(1, peliculaFormato.getIdPelicula());
                 statement.setInt(2, peliculaFormato.getIdFormato());
                 statement.setInt(3, peliculaFormato.getCantidad());
-                statement.setInt(4, peliculaFormato.getId());
+                statement.setInt(4, peliculaFormato.getIdFormato());
 				statement.executeUpdate();
 			}
 		}
