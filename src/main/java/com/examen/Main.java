@@ -5,7 +5,9 @@ import java.util.Scanner;
 import com.examen.models.actor.adapter.in.ActorConsoleAdapter;
 import com.examen.models.actor.adapter.out.ActorMySQLRepository;
 import com.examen.models.actor.application.ActorService;
+import com.examen.models.formato.adapter.in.FormatoConsoleAdapter;
 import com.examen.models.formato.adapter.out.FormatoMySQLRepository;
+import com.examen.models.formato.application.FormatoService;
 import com.examen.models.genero.adapter.in.GeneroConsoleAdapter;
 import com.examen.models.genero.adapter.out.GeneroMySQLRepository;
 import com.examen.models.genero.application.GeneroService;
@@ -15,7 +17,9 @@ import com.examen.models.pais.application.PaisService;
 import com.examen.models.pelicula.adapter.out.PeliculaMySQLRepository;
 import com.examen.models.peliculaFormato.adapter.out.PeliculaFormatoMySQLRepository;
 import com.examen.models.peliculaProtagonista.adapter.out.PeliculaProtagonistaMySQLRepository;
+import com.examen.models.tipoActor.adapter.in.TipoActorConsoleAdapter;
 import com.examen.models.tipoActor.adapter.out.TipoActorMySQLRepository;
+import com.examen.models.tipoActor.application.TipoActorService;
 
 public class Main {
     public static void main(String[] args) {
@@ -65,7 +69,9 @@ public class Main {
 
             }
             case 3 -> {
-                
+                FormatoService formatoService = new FormatoService(formatoMySQLRepository);
+                FormatoConsoleAdapter formatoConsoleAdapter = new FormatoConsoleAdapter(formatoService);
+                formatoConsoleAdapter.showMenu();
             }
             case 4 -> {
                 
@@ -82,7 +88,9 @@ public class Main {
                 paisConsoleAdapter.showMenu();
             }
             case 7 -> {
-                
+                TipoActorService tipoActorService = new TipoActorService(tipoActorMySQLRepository);
+                TipoActorConsoleAdapter tipoActorConsoleAdapter = new TipoActorConsoleAdapter(tipoActorService);
+                tipoActorConsoleAdapter.showMenu();
             }
             case 8 -> {
                 
